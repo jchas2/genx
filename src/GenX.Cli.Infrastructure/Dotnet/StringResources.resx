@@ -117,73 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DebugDescription" xml:space="preserve">
-    <value>Start genx by attaching a debugger.</value>
+  <data name="ApplyingWildcardMatch" xml:space="preserve">
+    <value>Applying namespace wildcard match: {0}</value>
   </data>
-  <data name="ErrorSavingMetadataFile" xml:space="preserve">
-    <value>Error saving metadata file {0}: {1}</value>
+  <data name="BadImage" xml:space="preserve">
+    <value>Can't load a file that is not a dotnet Assembly: {0}</value>
   </data>
-  <data name="GenerateCommandDescription" xml:space="preserve">
-    <value>Generate Source Code using an Xml metadata generated file.</value>
+  <data name="FailedToLoadAssembly" xml:space="preserve">
+    <value>Failed to load Assembly '{0}': {1}</value>
   </data>
-  <data name="GenerateDotnetDescription" xml:space="preserve">
-    <value>Generate Xml metadata using a dotnet Assembly.</value>
+  <data name="FilteringOnNamespace" xml:space="preserve">
+    <value>Filtering on namespace: {0}</value>
   </data>
-  <data name="GenerateOledbDescription" xml:space="preserve">
-    <value>Generate Xml metadata using an Oldb connection string.</value>
+  <data name="LoadingAssembly" xml:space="preserve">
+    <value>Loading Assembly '{0}'...</value>
   </data>
-  <data name="GenerateSqlDescription" xml:space="preserve">
-    <value>Generate Xml metadata using Sql Server Management Objects.</value>
+  <data name="ReadingAssemblyType" xml:space="preserve">
+    <value>Reading Assembly Type {0}...</value>
   </data>
-  <data name="HelpMetadataDbParameters" xml:space="preserve">
-    <value>Generate command expects a connection string and output filename for the metadata.</value>
+  <data name="ReturningAllAssemblyTypes" xml:space="preserve">
+    <value>Returning all Assembly Types</value>
   </data>
-  <data name="HelpMetadataDotnetParameters" xml:space="preserve">
-    <value>Generate command expects an assembly filename and output filename for the metadata.</value>
+  <data name="WritingConstructor" xml:space="preserve">
+    <value>Writing Ctor {0}...</value>
   </data>
-  <data name="HelpOptionDescription" xml:space="preserve">
-    <value>Displays usage / help text.</value>
+  <data name="WritingMetadataAssemblyModelToXml" xml:space="preserve">
+    <value>Writing Assembly Model to Xml metadata...</value>
   </data>
-  <data name="MetadataCommandDescription" xml:space="preserve">
-    <value>Generate Xml metadata from one of the metadata providers.</value>
+  <data name="WritingMetadataConstructor" xml:space="preserve">
+    <value>Writing Ctor {0}...</value>
   </data>
-  <data name="MetadataFileDoesNotExist" xml:space="preserve">
-    <value>Metadata file {0} does not exist.</value>
+  <data name="WritingMetadataMethod" xml:space="preserve">
+    <value>Writing Method {0}...</value>
   </data>
-  <data name="NoLoggingDescription" xml:space="preserve">
-    <value>Output is not written to StdOut, only StdErr.</value>
+  <data name="WritingMetadataParameter" xml:space="preserve">
+    <value>Writing Parameter {0}...</value>
   </data>
-  <data name="NoLogoDescription" xml:space="preserve">
-    <value>Runs genx without displaying the logo/startup banner.</value>
+  <data name="WritingMetadataProperty" xml:space="preserve">
+    <value>Writing Property {0}...</value>
   </data>
-  <data name="OutputExtensionRequired" xml:space="preserve">
-    <value>--outputextension option is required.</value>
+  <data name="WritingMetadataType" xml:space="preserve">
+    <value>Writing Type {0}...</value>
   </data>
-  <data name="ParserDiscardedUnexpectedToken" xml:space="preserve">
-    <value>Parser warning: Discarded unexpected token.</value>
-  </data>
-  <data name="ParserExpectedMetadataOption" xml:space="preserve">
-    <value>Parser error: Expected metadata-options.</value>
-  </data>
-  <data name="ParserExpectedXsltOption" xml:space="preserve">
-    <value>Expected [xslt-options]</value>
-  </data>
-  <data name="ParserExpectedXsltParam" xml:space="preserve">
-    <value>Expected --xsltparam &lt;paramname:paramvalue&gt;</value>
-  </data>
-  <data name="StartupOptionsDescription" xml:space="preserve">
-    <value>Startup options</value>
-  </data>
-  <data name="TransformFileDoesNotExist" xml:space="preserve">
-    <value>Xslt file {0} does not exist.</value>
-  </data>
-  <data name="Usage" xml:space="preserve">
-    <value>Usage</value>
-  </data>
-  <data name="VerboseDescription" xml:space="preserve">
-    <value>Runs genx with detailed logging written to StdOut.</value>
-  </data>
-  <data name="VersionDescription" xml:space="preserve">
-    <value>Display the version.</value>
+  <data name="WritingMethod" xml:space="preserve">
+    <value>Writing Method {0}...</value>
   </data>
 </root>

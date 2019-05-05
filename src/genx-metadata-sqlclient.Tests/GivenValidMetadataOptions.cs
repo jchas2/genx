@@ -19,13 +19,13 @@ namespace genx_metadata_sqlclient.Tests
         public void When_Using_All_Available_Options(string[] args, ExitCode exitCode)
         {
             var schemaReader = new Mock<IDbSchemaReader>();
-            var metadataWriter = new Mock<IMetadataWriter>();
+            var metadataWriter = new Mock<IMetadataWriter<DbModel>>();
             var document = new Mock<XmlDocument>();
 
             schemaReader.Setup(reader => reader.Read(
                 It.IsAny<string>())).Returns(new DbModel());
 
-            metadataWriter.Setup(writer => writer.WriteEntities(
+            metadataWriter.Setup(writer => writer.Write(
                 It.IsAny<DbModel>())).Returns(document.Object);
 
             var command = new MetadataSqlClientCommand(

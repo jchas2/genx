@@ -2,6 +2,7 @@
 using GenX.Cli.Core.Commands;
 using GenX.Cli.Infrastructure;
 using GenX.Cli.Infrastructure.Console;
+using GenX.Cli.Infrastructure.Dotnet;
 using GenX.Cli.Infrastructure.FileSystem;
 using GenX.Cli.Infrastructure.SqlClient;
 using System;
@@ -48,15 +49,19 @@ namespace genx
             var commandContext = new CommandContext();
             var outputWriter = new OutputWriter();
             var sqlClientSchemaReader = new SqlClientSchemaReader(outputWriter);
-            var dbModelMetadataWriter = new DbModelMetadataWriter(outputWriter);
+            var assemblyReader = new DotnetAssemblyReader(outputWriter);
+            var assemblyMetadataWriter = new DotnetAssemblyMetadataWriter(outputWriter);
             var dbModelMetadataReader = new DbModelMetadataReader();
+            var dbModelMetadataWriter = new DbModelMetadataWriter(outputWriter);
             var transformer = new Transformer(outputWriter);
             var directoryWrapper = new DirectoryWrapper();
             var fileWrapper = new FileWrapper();
 
             var factory = new CommandFactory(
                 sqlClientSchemaReader,
+                assemblyReader,
                 dbModelMetadataWriter,
+                assemblyMetadataWriter,
                 dbModelMetadataReader,
                 transformer,
                 outputWriter,

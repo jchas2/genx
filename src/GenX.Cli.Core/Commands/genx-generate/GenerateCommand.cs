@@ -43,7 +43,7 @@ namespace GenX.Cli.Core.Commands.Generate
             }
 
             SetPreconditions(configuration);
-            var entities = _metadataReader.ReadEntityNames(configuration.MetadataPath).ToList();
+            var entities = _metadataReader.ReadNames(configuration.MetadataPath).ToList();
             DoTransform(entities, configuration);
 
             return ExitCode.Success;

@@ -4,6 +4,6 @@ namespace GenX.Cli.Core
 {
     public interface IMetadataReader
     {
-        IEnumerable<string> ReadEntityNames(string filename);
+        IEnumerable<string> ReadNames(string filename);
     }
 }

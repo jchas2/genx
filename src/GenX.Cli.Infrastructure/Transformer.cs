@@ -8,7 +8,7 @@ using System.Xml.Xsl;
 
 namespace GenX.Cli.Infrastructure
 {
-    public class Transformer : ITransformer
+    public sealed class Transformer : ITransformer
     {
         private readonly IOutputWriter _outputWriter;
 

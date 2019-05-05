@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
 
-namespace GenX.Cli.Core.Commands.MetaDataSqlClient
+namespace GenX.Cli.Core.Commands.MetadataDotNet
 {
-    public class MetadataSqlClientCommand : ICommand
+    public class MetadataDotNetCommand : ICommand
     {
         private readonly List<string> _args;
-        private readonly IDbSchemaReader _schemaReader;
-        private readonly IMetadataWriter<DbModel> _metadataWriter;
+        private readonly IAssemblyReader _assemblyReader;
+        private readonly IMetadataWriter<AssemblyModel> _metadataWriter;
         private readonly IOutputWriter _outputWriter;
 
-        public MetadataSqlClientCommand(
+        public MetadataDotNetCommand(
             List<string> args,
-            IDbSchemaReader schemaReader,
-            IMetadataWriter<DbModel> metadataWriter,
+            IAssemblyReader assemblyReader,
+            IMetadataWriter<AssemblyModel> metadataWriter,
             IOutputWriter outputWriter)
         {
             _args = args;
-            _schemaReader = schemaReader;
+            _assemblyReader = assemblyReader;
             _metadataWriter = metadataWriter;
             _outputWriter = outputWriter;
         }
@@ -28,20 +28,26 @@ namespace GenX.Cli.Core.Commands.MetaDataSqlClient
 
             if (_args.Count < RequiredArgs)
             {
-                _outputWriter.Output.WriteLine(StringResources.HelpMetadataDbParameters);
+                _outputWriter.Output.WriteLine(StringResources.HelpMetadataDotnetParameters);
                 return ExitCode.Error;
             }
 
-            string connectionString = _args[0];
+            string assemblyname = _args[0];
             string filename = _args[1];
+            string namespaceFilter = _args.Count > RequiredArgs
+                ? _args[2]
+                : "*";
 
-            var dbModel = _schemaReader.Read(connectionString);
-            if (dbModel == null)
+            var assemblyModel = _assemblyReader.Read(
+                assemblyname,
+                namespaceFilter);
+
+            if (assemblyModel == null)
             {
                 return ExitCode.Error;
             }
 
-            var document = _metadataWriter.Write(dbModel);
+            var document = _metadataWriter.Write(assemblyModel);
             if (document == null)
             {
                 return ExitCode.Error;
@@ -63,4 +69,3 @@ namespace GenX.Cli.Core.Commands.MetaDataSqlClient
         }
     }
 }
-

@@ -6,6 +6,11 @@ namespace GenX.Cli.Infrastructure
     {
         private static char[] _compressedStringSeparators = new char[] { ' ', '-', '_' };
 
+        public static string ToCamelCase(this string source) =>
+            source.Length > 0 
+                ? source.Substring(0, 1).ToLower() + source.Substring(1, source.Length - 1) 
+                : source;
+
         public static string ToCompressedString(this string source) =>
             source.Replace(_compressedStringSeparators, string.Empty);
  

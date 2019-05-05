@@ -88,6 +88,15 @@ namespace GenX.Cli.Core.Commands {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate Xml metadata using a dotnet Assembly..
+        /// </summary>
+        internal static string GenerateDotnetDescription {
+            get {
+                return ResourceManager.GetString("GenerateDotnetDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate Xml metadata using an Oldb connection string..
         /// </summary>
         internal static string GenerateOledbDescription {
@@ -111,6 +120,15 @@ namespace GenX.Cli.Core.Commands {
         internal static string HelpMetadataDbParameters {
             get {
                 return ResourceManager.GetString("HelpMetadataDbParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate command expects an assembly filename and output filename for the metadata..
+        /// </summary>
+        internal static string HelpMetadataDotnetParameters {
+            get {
+                return ResourceManager.GetString("HelpMetadataDotnetParameters", resourceCulture);
             }
         }
         

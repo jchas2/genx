@@ -2,6 +2,7 @@ using GenX.Cli.Core;
 using GenX.Cli.Core.Commands;
 using GenX.Cli.Core.Commands.Generate;
 using GenX.Cli.Core.Commands.Help;
+using GenX.Cli.Core.Commands.MetadataDotNet;
 using GenX.Cli.Core.Commands.MetaDataOledb;
 using GenX.Cli.Core.Commands.MetaDataSqlClient;
 using GenX.Cli.Core.Commands.Version;
@@ -16,7 +17,9 @@ namespace GenX.Cli.CommandFactory.Tests
         private readonly CmdFactory _commandFactory;
 
         private readonly Mock<IDbSchemaReader> _dbSchemaReader;
-        private readonly Mock<IMetadataWriter> _dbModelMetadataWriter;
+        private readonly Mock<IAssemblyReader> _assemblyReader;
+        private readonly Mock<IMetadataWriter<DbModel>> _dbModelMetadataWriter;
+        private readonly Mock<IMetadataWriter<AssemblyModel>> _assemblyMetadataWriter;
         private readonly Mock<IMetadataReader> _dbModelMetadataReader;
         private readonly Mock<ITransformer> _transformer;
         private readonly Mock<IOutputWriter> _outputWriter;
@@ -27,7 +30,9 @@ namespace GenX.Cli.CommandFactory.Tests
         public GivenACommand()
         {
             _dbSchemaReader = new Mock<IDbSchemaReader>();
-            _dbModelMetadataWriter = new Mock<IMetadataWriter>();
+            _assemblyReader = new Mock<IAssemblyReader>();
+            _dbModelMetadataWriter = new Mock<IMetadataWriter<DbModel>>();
+            _assemblyMetadataWriter = new Mock<IMetadataWriter<AssemblyModel>>();
             _dbModelMetadataReader = new Mock<IMetadataReader>();
             _transformer = new Mock<ITransformer>();
             _outputWriter = new Mock<IOutputWriter>();
@@ -37,7 +42,9 @@ namespace GenX.Cli.CommandFactory.Tests
 
             _commandFactory = new CmdFactory(
                 _dbSchemaReader.Object,
+                _assemblyReader.Object,
                 _dbModelMetadataWriter.Object,
+                _assemblyMetadataWriter.Object,
                 _dbModelMetadataReader.Object,
                 _transformer.Object,
                 _outputWriter.Object,
@@ -54,6 +61,9 @@ namespace GenX.Cli.CommandFactory.Tests
 
             cmd = _commandFactory.Create("help");
             cmd.Should().Be<HelpCommand>();
+
+            cmd = _commandFactory.Create("metadata-dotnet");
+            cmd.Should().Be<MetadataDotNetCommand>();
 
             cmd = _commandFactory.Create("metadata-oledb");
             cmd.Should().Be<MetadataOledbCommand>();

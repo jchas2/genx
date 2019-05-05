@@ -2,8 +2,8 @@
 
 namespace GenX.Cli.Core
 {
-    public interface IMetadataWriter
+    public interface IMetadataWriter<T>
     {
-        XmlDocument WriteEntities(DbModel dbModel);
+        XmlDocument Write(T model);
     }
 }

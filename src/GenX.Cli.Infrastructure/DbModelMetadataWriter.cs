@@ -5,13 +5,13 @@ using System.Xml;
 
 namespace GenX.Cli.Infrastructure
 {
-    public class DbModelMetadataWriter : IMetadataWriter
+    public sealed class DbModelMetadataWriter : BaseMetadataWriter, IMetadataWriter<DbModel>
     {
         private readonly IOutputWriter _outputWriter;
 
         public DbModelMetadataWriter(IOutputWriter outputWriter) => _outputWriter = outputWriter;
 
-        public XmlDocument WriteEntities(DbModel dbModel)
+        public XmlDocument Write(DbModel dbModel)
         {
             _outputWriter.Output.WriteLine(StringResources.WritingMetadataDbModelToXml);
 
@@ -26,7 +26,7 @@ namespace GenX.Cli.Infrastructure
             var databaseElement = CreateElement(document, "dataStructure", "dbname", Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
             rootElement.AppendChild(databaseElement);
 
-            var entitiesElement = CreateElement(document, "entities", Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
+            var entitiesElement = CreateElement(document, Constants.MetadataEntities, Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
             entitiesElement.Prefix = Constants.ElementNameSpacePrefix;
 
             CreateEntitiesXml(document, dbModel, entitiesElement);
@@ -63,7 +63,7 @@ namespace GenX.Cli.Infrastructure
                 CreateAttribute(document, "originalname", originalName));
 
             entityNode.Attributes.Append(
-                CreateAttribute(document, "camelcase", originalName.Substring(0, 1).ToLower() + originalName.Substring(1, originalName.Length - 1)));
+                CreateAttribute(document, "camelcase", originalName.ToCamelCase()));
 
             var columnsNode = entityNode.AppendChild(
                 CreateElement(document, "entitycolumns", Constants.ElementNameSpacePrefix, Constants.ElementNameSpace));
@@ -181,48 +181,6 @@ namespace GenX.Cli.Infrastructure
             //columnNode.Attributes.Append(CreateAttribute("IsAutoIncrement", "False"));
 
             return columnNode;
-        }
-
-        private XmlElement CreateElement(
-            XmlDocument document, 
-            string elementName, 
-            string elementPrefix, 
-            string elementNameSpace) =>
-                document.CreateElement(elementPrefix, elementName, elementNameSpace);
-
-        private XmlElement CreateElement(
-            XmlDocument document,
-            string elementName, 
-            string name, 
-            string elementPrefix, 
-            string elementNameSpace)
-        {
-            var element = document.CreateElement(elementPrefix, elementName, elementNameSpace);
-
-            element.Attributes.Append(
-                CreateAttribute(document, "name", name));
-
-            return element;
-        }
-
-        private XmlElement CreateHeaderElement(XmlDocument document, string type)
-        {
-            var rootElement = document.CreateElement(Constants.RootElementNameSpacePrefix, "metadataroot", Constants.RootElementNameSpace);
-
-            rootElement.Attributes.Append(
-                CreateAttribute(document, "metadataprovider", type));
-
-            rootElement.Attributes.Append(
-                CreateAttribute(document, "freeform", "true"));
-
-            return rootElement;
-        }
-
-        private XmlAttribute CreateAttribute(XmlDocument document, string name, string value)
-        {
-            var attribute = document.CreateAttribute(name);
-            attribute.Value = value;
-            return attribute;
         }
     }
 }

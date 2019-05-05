@@ -6,10 +6,10 @@ namespace GenX.Cli.Infrastructure.Oledb
 {
     public class OledbMetadataReader : IMetadataReader
     {
-        public IEnumerable<string> ReadEntityNames(string filename)
+        public IEnumerable<string> ReadNames(string filename)
         {
             var document = XDocument.Load(filename);
-            var entities = document.Descendants(XName.Get(Constants.MetadataLocalName, Constants.MetadataNamespaceName));
+            var entities = document.Descendants(XName.Get(Constants.MetadataEntities, Constants.MetadataNamespaceName));
 
             foreach (var elemnent in entities.Elements())
             {

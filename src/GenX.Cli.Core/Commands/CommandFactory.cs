@@ -1,5 +1,6 @@
 ﻿using GenX.Cli.Core.Commands.Generate;
 using GenX.Cli.Core.Commands.Help;
+using GenX.Cli.Core.Commands.MetadataDotNet;
 using GenX.Cli.Core.Commands.MetaDataOledb;
 using GenX.Cli.Core.Commands.MetaDataSqlClient;
 using GenX.Cli.Core.Commands.Version;
@@ -14,7 +15,9 @@ namespace GenX.Cli.Core.Commands
 
         public CommandFactory(
             IDbSchemaReader dbSchemaReader,
-            IMetadataWriter dbModelMetadataWriter,
+            IAssemblyReader assemblyReader,
+            IMetadataWriter<DbModel> dbModelMetadataWriter,
+            IMetadataWriter<AssemblyModel> assemblyMetadataWriter,
             IMetadataReader dbModelMetadataReader,
             ITransformer transformer,
             IOutputWriter outputWriter,
@@ -24,6 +27,12 @@ namespace GenX.Cli.Core.Commands
         {
             RegisterCommand("h", "help", () => new HelpCommand(outputWriter));
             RegisterCommand("v", "version", () => new VersionCommand(outputWriter));
+
+            RegisterCommand("metadata-dotnet", () => new MetadataDotNetCommand(
+                context.CommandArgs,
+                assemblyReader,
+                assemblyMetadataWriter,
+                outputWriter));
 
             RegisterCommand("metadata-sqlclient", () => new MetadataSqlClientCommand(
                 context.CommandArgs, 

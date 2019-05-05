@@ -43,7 +43,7 @@ namespace genx_generate.Tests
                 It.IsAny<string>())).Returns(true);
 
             var entityNames = new List<string> { "entity1" };
-            metadataReader.Setup(reader => reader.ReadEntityNames(It.IsAny<string>())).Returns(entityNames);
+            metadataReader.Setup(reader => reader.ReadNames(It.IsAny<string>())).Returns(entityNames);
 
             var command = new GenerateCommand(
                 args.ToList(), 

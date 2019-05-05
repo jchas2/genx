@@ -4,12 +4,12 @@ using System.Xml.Linq;
 
 namespace GenX.Cli.Infrastructure
 {
-    public class DbModelMetadataReader : IMetadataReader
+    public sealed class DbModelMetadataReader : IMetadataReader
     {
-        public IEnumerable<string> ReadEntityNames(string filename)
+        public IEnumerable<string> ReadNames(string filename)
         {
             var document = XDocument.Load(filename);
-            var entities = document.Descendants(XName.Get(Constants.MetadataLocalName, Constants.MetadataNamespaceName));
+            var entities = document.Descendants(XName.Get(Constants.MetadataEntities, Constants.MetadataNamespaceName));
 
             foreach (var elemnent in entities.Elements())
             {

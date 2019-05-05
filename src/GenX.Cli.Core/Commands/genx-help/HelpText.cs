@@ -20,8 +20,9 @@ startuo-options:
 {StringResources.MetadataCommandDescription}
 
 metadata-commands:
-    metadata-oledb|oledb <connection-string> <filename>   {StringResources.GenerateOledbDescription}
-    metadata-sql|sql <connection-string> <filename>       {StringResources.GenerateSqlDescription}
+    metadata-oledb|oledb <connection-string> <filename>                     {StringResources.GenerateOledbDescription}
+    metadata-sql|sql <connection-string> <filename>                         {StringResources.GenerateSqlDescription}
+    metadata-dotnet|dotnet <assembly-path> <filename> [<namespace-filter>]  {StringResources.GenerateDotnetDescription}  
 
 {StringResources.Usage}: genx [generation-commands] [options]
 
