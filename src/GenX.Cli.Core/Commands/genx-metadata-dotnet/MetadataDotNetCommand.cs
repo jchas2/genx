@@ -38,9 +38,7 @@ namespace GenX.Cli.Core.Commands.MetadataDotNet
                 ? _args[2]
                 : "*";
 
-            var assemblyModel = _assemblyReader.Read(
-                assemblyname,
-                namespaceFilter);
+            var assemblyModel = _assemblyReader.Read(assemblyname, namespaceFilter);
 
             if (assemblyModel == null)
             {

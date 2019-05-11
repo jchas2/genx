@@ -63,7 +63,7 @@ namespace GenX.Cli.Infrastructure
                 CreateAttribute(document, "originalname", originalName));
 
             entityNode.Attributes.Append(
-                CreateAttribute(document, "camelcase", originalName.ToCamelCase()));
+                CreateAttribute(document, "camelcase", entityName.ToCamelCase()));
 
             var columnsNode = entityNode.AppendChild(
                 CreateElement(document, "entitycolumns", Constants.ElementNameSpacePrefix, Constants.ElementNameSpace));
@@ -159,9 +159,9 @@ namespace GenX.Cli.Infrastructure
                 CreateAttribute(document, "label", columnName));
 
             columnNode.Attributes.Append(
-                CreateAttribute(document, "camelcase", 
-                    originalName.Substring(0, 1).ToLower() + 
-                        originalName.Substring(1, originalName.Length - 1)));
+                CreateAttribute(document, "camelcase",
+                    columnName.Substring(0, 1).ToLower() +
+                        columnName.Substring(1, columnName.Length - 1)));
 
             columnNode.Attributes.Append(
                 CreateAttribute(document, "datatype", dbColumn.DataType));
