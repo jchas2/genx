@@ -116,15 +116,13 @@ namespace genx
                     commandContext.CommandArgs = commandArgs;
                     PrintBanner(commandContext, outputWriter);
                     command = factory.Create(lastArg);
-
-                    if (command == null)
-                    {
-                        factory.Create("help").Execute();
-                        return ExitCode.Error;
-                    }
-
                     break;
                 }
+            }
+
+            if (command == null)
+            {
+                command = factory.Create("help");
             }
 
             return command.Execute();
