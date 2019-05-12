@@ -170,7 +170,7 @@ namespace GenX.Cli.Infrastructure
                 CreateAttribute(document, "maxlength", dbColumn.Size.HasValue ? dbColumn.Size.Value.ToString() : ""));
 
             columnNode.Attributes.Append(
-                CreateAttribute(document, "allownlulls", dbColumn.IsNullable ? "true" : "false"));
+                CreateAttribute(document, "allownulls", dbColumn.IsNullable ? "true" : "false"));
 
             columnNode.Attributes.Append(
                 CreateAttribute(document, "isprimarykey", 

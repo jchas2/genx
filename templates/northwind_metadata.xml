@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mdr:metadataroot metadataprovider="GenX.Cli.Infrastructure.DbModelMetadataWriter" freeform="true" xmlns:mdr="http://genx.com/metadataroot">
+  <md:dataStructure name="dbname" xmlns:md="http://genx.com/metadata">
+    <md:entities>
+      <md:entity name="Alphabeticallistofproducts" originalname="Alphabetical list of products" camelcase="alphabetical list of products">
+        <md:entitycolumns>
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Discontinued" originalname="Discontinued" label="Discontinued" camelcase="discontinued" datatype="bit" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="SupplierID" originalname="SupplierID" label="SupplierID" camelcase="supplierID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="CategoryID" originalname="CategoryID" label="CategoryID" camelcase="categoryID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="QuantityPerUnit" originalname="QuantityPerUnit" label="QuantityPerUnit" camelcase="quantityPerUnit" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitsInStock" originalname="UnitsInStock" label="UnitsInStock" camelcase="unitsInStock" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitsOnOrder" originalname="UnitsOnOrder" label="UnitsOnOrder" camelcase="unitsOnOrder" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ReorderLevel" originalname="ReorderLevel" label="ReorderLevel" camelcase="reorderLevel" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Categories" originalname="Categories" camelcase="categories">
+        <md:entitycolumns>
+          <md:column name="CategoryID" originalname="CategoryID" label="CategoryID" camelcase="categoryID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Description" originalname="Description" label="Description" camelcase="description" datatype="ntext" maxlength="1073741823" allownulls="false" isprimarykey="false" />
+          <md:column name="Picture" originalname="Picture" label="Picture" camelcase="picture" datatype="image" maxlength="2147483647" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Products.CategoryID_Categories.CategoryID" foreignkeyentity="Products" foreignkeycolumn="CategoryID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="CategorySalesfor1997" originalname="Category Sales for 1997" camelcase="category Sales for 1997">
+        <md:entitycolumns>
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="CategorySales" originalname="CategorySales" label="CategorySales" camelcase="categorySales" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="CurrentProductList" originalname="Current Product List" camelcase="current Product List">
+        <md:entitycolumns>
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="CustomerandSuppliersbyCity" originalname="Customer and Suppliers by City" camelcase="customer and Suppliers by City">
+        <md:entitycolumns>
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Relationship" originalname="Relationship" label="Relationship" camelcase="relationship" datatype="varchar" maxlength="9" allownulls="false" isprimarykey="false" />
+          <md:column name="ContactName" originalname="ContactName" label="ContactName" camelcase="contactName" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="CustomerCustomerDemo" originalname="CustomerCustomerDemo" camelcase="customerCustomerDemo">
+        <md:entitycolumns>
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="CustomerID" primarykeyentity="Customers" primarykeycolumn="CustomerID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="CustomerTypeID" originalname="CustomerTypeID" label="CustomerTypeID" camelcase="customerTypeID" datatype="nchar" maxlength="10" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="CustomerTypeID" primarykeyentity="CustomerDemographics" primarykeycolumn="CustomerTypeID" />
+            </md:foreignkeys>
+          </md:column>
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="CustomerDemographics" originalname="CustomerDemographics" camelcase="customerDemographics">
+        <md:entitycolumns>
+          <md:column name="CustomerTypeID" originalname="CustomerTypeID" label="CustomerTypeID" camelcase="customerTypeID" datatype="nchar" maxlength="10" allownulls="false" isprimarykey="true" />
+          <md:column name="CustomerDesc" originalname="CustomerDesc" label="CustomerDesc" camelcase="customerDesc" datatype="ntext" maxlength="1073741823" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="CustomerCustomerDemo.CustomerTypeID_CustomerDemographics.CustomerTypeID" foreignkeyentity="CustomerCustomerDemo" foreignkeycolumn="CustomerTypeID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="Customers" originalname="Customers" camelcase="customers">
+        <md:entitycolumns>
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="true" />
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ContactName" originalname="ContactName" label="ContactName" camelcase="contactName" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="ContactTitle" originalname="ContactTitle" label="ContactTitle" camelcase="contactTitle" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="Address" originalname="Address" label="Address" camelcase="address" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Region" originalname="Region" label="Region" camelcase="region" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="PostalCode" originalname="PostalCode" label="PostalCode" camelcase="postalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Phone" originalname="Phone" label="Phone" camelcase="phone" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+          <md:column name="Fax" originalname="Fax" label="Fax" camelcase="fax" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="CustomerCustomerDemo.CustomerID_Customers.CustomerID" foreignkeyentity="CustomerCustomerDemo" foreignkeycolumn="CustomerID" />
+          <md:relationship name="Orders.CustomerID_Customers.CustomerID" foreignkeyentity="Orders" foreignkeycolumn="CustomerID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="Employees" originalname="Employees" camelcase="employees">
+        <md:entitycolumns>
+          <md:column name="EmployeeID" originalname="EmployeeID" label="EmployeeID" camelcase="employeeID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="LastName" originalname="LastName" label="LastName" camelcase="lastName" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="false" />
+          <md:column name="FirstName" originalname="FirstName" label="FirstName" camelcase="firstName" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Title" originalname="Title" label="Title" camelcase="title" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="TitleOfCourtesy" originalname="TitleOfCourtesy" label="TitleOfCourtesy" camelcase="titleOfCourtesy" datatype="nvarchar" maxlength="25" allownulls="false" isprimarykey="false" />
+          <md:column name="BirthDate" originalname="BirthDate" label="BirthDate" camelcase="birthDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="HireDate" originalname="HireDate" label="HireDate" camelcase="hireDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Address" originalname="Address" label="Address" camelcase="address" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Region" originalname="Region" label="Region" camelcase="region" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="PostalCode" originalname="PostalCode" label="PostalCode" camelcase="postalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="HomePhone" originalname="HomePhone" label="HomePhone" camelcase="homePhone" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+          <md:column name="Extension" originalname="Extension" label="Extension" camelcase="extension" datatype="nvarchar" maxlength="4" allownulls="false" isprimarykey="false" />
+          <md:column name="Photo" originalname="Photo" label="Photo" camelcase="photo" datatype="image" maxlength="2147483647" allownulls="false" isprimarykey="false" />
+          <md:column name="Notes" originalname="Notes" label="Notes" camelcase="notes" datatype="ntext" maxlength="1073741823" allownulls="false" isprimarykey="false" />
+          <md:column name="ReportsTo" originalname="ReportsTo" label="ReportsTo" camelcase="reportsTo" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="ReportsTo" primarykeyentity="Employees" primarykeycolumn="EmployeeID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="PhotoPath" originalname="PhotoPath" label="PhotoPath" camelcase="photoPath" datatype="nvarchar" maxlength="255" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Employees.ReportsTo_Employees.EmployeeID" foreignkeyentity="Employees" foreignkeycolumn="ReportsTo" />
+          <md:relationship name="EmployeeTerritories.EmployeeID_Employees.EmployeeID" foreignkeyentity="EmployeeTerritories" foreignkeycolumn="EmployeeID" />
+          <md:relationship name="Orders.EmployeeID_Employees.EmployeeID" foreignkeyentity="Orders" foreignkeycolumn="EmployeeID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="EmployeeTerritories" originalname="EmployeeTerritories" camelcase="employeeTerritories">
+        <md:entitycolumns>
+          <md:column name="EmployeeID" originalname="EmployeeID" label="EmployeeID" camelcase="employeeID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="EmployeeID" primarykeyentity="Employees" primarykeycolumn="EmployeeID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="TerritoryID" originalname="TerritoryID" label="TerritoryID" camelcase="territoryID" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="TerritoryID" primarykeyentity="Territories" primarykeycolumn="TerritoryID" />
+            </md:foreignkeys>
+          </md:column>
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Invoices" originalname="Invoices" camelcase="invoices">
+        <md:entitycolumns>
+          <md:column name="CustomerName" originalname="CustomerName" label="CustomerName" camelcase="customerName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Salesperson" originalname="Salesperson" label="Salesperson" camelcase="salesperson" datatype="nvarchar" maxlength="31" allownulls="false" isprimarykey="false" />
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipperName" originalname="ShipperName" label="ShipperName" camelcase="shipperName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Quantity" originalname="Quantity" label="Quantity" camelcase="quantity" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Discount" originalname="Discount" label="Discount" camelcase="discount" datatype="real" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ExtendedPrice" originalname="ExtendedPrice" label="ExtendedPrice" camelcase="extendedPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Freight" originalname="Freight" label="Freight" camelcase="freight" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="OrderDate" originalname="OrderDate" label="OrderDate" camelcase="orderDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="RequiredDate" originalname="RequiredDate" label="RequiredDate" camelcase="requiredDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Address" originalname="Address" label="Address" camelcase="address" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Region" originalname="Region" label="Region" camelcase="region" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="PostalCode" originalname="PostalCode" label="PostalCode" camelcase="postalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipName" originalname="ShipName" label="ShipName" camelcase="shipName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipAddress" originalname="ShipAddress" label="ShipAddress" camelcase="shipAddress" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCity" originalname="ShipCity" label="ShipCity" camelcase="shipCity" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipRegion" originalname="ShipRegion" label="ShipRegion" camelcase="shipRegion" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipPostalCode" originalname="ShipPostalCode" label="ShipPostalCode" camelcase="shipPostalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCountry" originalname="ShipCountry" label="ShipCountry" camelcase="shipCountry" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="OrderDetails" originalname="Order Details" camelcase="order Details">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="OrderID" primarykeyentity="Orders" primarykeycolumn="OrderID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true">
+            <md:foreignkeys>
+              <md:foreignkey name="ProductID" primarykeyentity="Products" primarykeycolumn="ProductID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Quantity" originalname="Quantity" label="Quantity" camelcase="quantity" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Discount" originalname="Discount" label="Discount" camelcase="discount" datatype="real" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="OrderDetailsExtended" originalname="Order Details Extended" camelcase="order Details Extended">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Quantity" originalname="Quantity" label="Quantity" camelcase="quantity" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Discount" originalname="Discount" label="Discount" camelcase="discount" datatype="real" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ExtendedPrice" originalname="ExtendedPrice" label="ExtendedPrice" camelcase="extendedPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="OrderSubtotals" originalname="Order Subtotals" camelcase="order Subtotals">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Subtotal" originalname="Subtotal" label="Subtotal" camelcase="subtotal" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Orders" originalname="Orders" camelcase="orders">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="CustomerID" primarykeyentity="Customers" primarykeycolumn="CustomerID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="EmployeeID" originalname="EmployeeID" label="EmployeeID" camelcase="employeeID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="EmployeeID" primarykeyentity="Employees" primarykeycolumn="EmployeeID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="OrderDate" originalname="OrderDate" label="OrderDate" camelcase="orderDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="RequiredDate" originalname="RequiredDate" label="RequiredDate" camelcase="requiredDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipVia" originalname="ShipVia" label="ShipVia" camelcase="shipVia" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="ShipVia" primarykeyentity="Shippers" primarykeycolumn="ShipperID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="Freight" originalname="Freight" label="Freight" camelcase="freight" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipName" originalname="ShipName" label="ShipName" camelcase="shipName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipAddress" originalname="ShipAddress" label="ShipAddress" camelcase="shipAddress" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCity" originalname="ShipCity" label="ShipCity" camelcase="shipCity" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipRegion" originalname="ShipRegion" label="ShipRegion" camelcase="shipRegion" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipPostalCode" originalname="ShipPostalCode" label="ShipPostalCode" camelcase="shipPostalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCountry" originalname="ShipCountry" label="ShipCountry" camelcase="shipCountry" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Order Details.OrderID_Orders.OrderID" foreignkeyentity="Order Details" foreignkeycolumn="OrderID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="OrdersQry" originalname="Orders Qry" camelcase="orders Qry">
+        <md:entitycolumns>
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="false" />
+          <md:column name="EmployeeID" originalname="EmployeeID" label="EmployeeID" camelcase="employeeID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="OrderDate" originalname="OrderDate" label="OrderDate" camelcase="orderDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="RequiredDate" originalname="RequiredDate" label="RequiredDate" camelcase="requiredDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipVia" originalname="ShipVia" label="ShipVia" camelcase="shipVia" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Freight" originalname="Freight" label="Freight" camelcase="freight" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipName" originalname="ShipName" label="ShipName" camelcase="shipName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipAddress" originalname="ShipAddress" label="ShipAddress" camelcase="shipAddress" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCity" originalname="ShipCity" label="ShipCity" camelcase="shipCity" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipRegion" originalname="ShipRegion" label="ShipRegion" camelcase="shipRegion" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipPostalCode" originalname="ShipPostalCode" label="ShipPostalCode" camelcase="shipPostalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="ShipCountry" originalname="ShipCountry" label="ShipCountry" camelcase="shipCountry" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Address" originalname="Address" label="Address" camelcase="address" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Region" originalname="Region" label="Region" camelcase="region" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="PostalCode" originalname="PostalCode" label="PostalCode" camelcase="postalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="ProductSalesfor1997" originalname="Product Sales for 1997" camelcase="product Sales for 1997">
+        <md:entitycolumns>
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductSales" originalname="ProductSales" label="ProductSales" camelcase="productSales" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Products" originalname="Products" camelcase="products">
+        <md:entitycolumns>
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Discontinued" originalname="Discontinued" label="Discontinued" camelcase="discontinued" datatype="bit" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="SupplierID" originalname="SupplierID" label="SupplierID" camelcase="supplierID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="SupplierID" primarykeyentity="Suppliers" primarykeycolumn="SupplierID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="CategoryID" originalname="CategoryID" label="CategoryID" camelcase="categoryID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="CategoryID" primarykeyentity="Categories" primarykeycolumn="CategoryID" />
+            </md:foreignkeys>
+          </md:column>
+          <md:column name="QuantityPerUnit" originalname="QuantityPerUnit" label="QuantityPerUnit" camelcase="quantityPerUnit" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitsInStock" originalname="UnitsInStock" label="UnitsInStock" camelcase="unitsInStock" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitsOnOrder" originalname="UnitsOnOrder" label="UnitsOnOrder" camelcase="unitsOnOrder" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ReorderLevel" originalname="ReorderLevel" label="ReorderLevel" camelcase="reorderLevel" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Order Details.ProductID_Products.ProductID" foreignkeyentity="Order Details" foreignkeycolumn="ProductID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="ProductsAboveAveragePrice" originalname="Products Above Average Price" camelcase="products Above Average Price">
+        <md:entitycolumns>
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitPrice" originalname="UnitPrice" label="UnitPrice" camelcase="unitPrice" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="ProductsbyCategory" originalname="Products by Category" camelcase="products by Category">
+        <md:entitycolumns>
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Discontinued" originalname="Discontinued" label="Discontinued" camelcase="discontinued" datatype="bit" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="QuantityPerUnit" originalname="QuantityPerUnit" label="QuantityPerUnit" camelcase="quantityPerUnit" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="false" />
+          <md:column name="UnitsInStock" originalname="UnitsInStock" label="UnitsInStock" camelcase="unitsInStock" datatype="smallint" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="QuarterlyOrders" originalname="Quarterly Orders" camelcase="quarterly Orders">
+        <md:entitycolumns>
+          <md:column name="CustomerID" originalname="CustomerID" label="CustomerID" camelcase="customerID" datatype="nchar" maxlength="5" allownulls="false" isprimarykey="false" />
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Region" originalname="Region" camelcase="region">
+        <md:entitycolumns>
+          <md:column name="RegionID" originalname="RegionID" label="RegionID" camelcase="regionID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="RegionDescription" originalname="RegionDescription" label="RegionDescription" camelcase="regionDescription" datatype="nchar" maxlength="50" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Territories.RegionID_Region.RegionID" foreignkeyentity="Territories" foreignkeycolumn="RegionID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="SalesbyCategory" originalname="Sales by Category" camelcase="sales by Category">
+        <md:entitycolumns>
+          <md:column name="CategoryID" originalname="CategoryID" label="CategoryID" camelcase="categoryID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductSales" originalname="ProductSales" label="ProductSales" camelcase="productSales" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="SalesTotalsbyAmount" originalname="Sales Totals by Amount" camelcase="sales Totals by Amount">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="SaleAmount" originalname="SaleAmount" label="SaleAmount" camelcase="saleAmount" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Shippers" originalname="Shippers" camelcase="shippers">
+        <md:entitycolumns>
+          <md:column name="ShipperID" originalname="ShipperID" label="ShipperID" camelcase="shipperID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="Phone" originalname="Phone" label="Phone" camelcase="phone" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Orders.ShipVia_Shippers.ShipperID" foreignkeyentity="Orders" foreignkeycolumn="ShipVia" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="SummaryofSalesbyQuarter" originalname="Summary of Sales by Quarter" camelcase="summary of Sales by Quarter">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Subtotal" originalname="Subtotal" label="Subtotal" camelcase="subtotal" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="SummaryofSalesbyYear" originalname="Summary of Sales by Year" camelcase="summary of Sales by Year">
+        <md:entitycolumns>
+          <md:column name="OrderID" originalname="OrderID" label="OrderID" camelcase="orderID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="Subtotal" originalname="Subtotal" label="Subtotal" camelcase="subtotal" datatype="money" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ShippedDate" originalname="ShippedDate" label="ShippedDate" camelcase="shippedDate" datatype="datetime" maxlength="-1" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Suppliers" originalname="Suppliers" camelcase="suppliers">
+        <md:entitycolumns>
+          <md:column name="SupplierID" originalname="SupplierID" label="SupplierID" camelcase="supplierID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="CompanyName" originalname="CompanyName" label="CompanyName" camelcase="companyName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+          <md:column name="ContactName" originalname="ContactName" label="ContactName" camelcase="contactName" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="ContactTitle" originalname="ContactTitle" label="ContactTitle" camelcase="contactTitle" datatype="nvarchar" maxlength="30" allownulls="false" isprimarykey="false" />
+          <md:column name="Address" originalname="Address" label="Address" camelcase="address" datatype="nvarchar" maxlength="60" allownulls="false" isprimarykey="false" />
+          <md:column name="City" originalname="City" label="City" camelcase="city" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Region" originalname="Region" label="Region" camelcase="region" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="PostalCode" originalname="PostalCode" label="PostalCode" camelcase="postalCode" datatype="nvarchar" maxlength="10" allownulls="false" isprimarykey="false" />
+          <md:column name="Country" originalname="Country" label="Country" camelcase="country" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+          <md:column name="Phone" originalname="Phone" label="Phone" camelcase="phone" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+          <md:column name="Fax" originalname="Fax" label="Fax" camelcase="fax" datatype="nvarchar" maxlength="24" allownulls="false" isprimarykey="false" />
+          <md:column name="HomePage" originalname="HomePage" label="HomePage" camelcase="homePage" datatype="ntext" maxlength="1073741823" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Products.SupplierID_Suppliers.SupplierID" foreignkeyentity="Products" foreignkeycolumn="SupplierID" />
+        </md:relationships>
+      </md:entity>
+      <md:entity name="Territories" originalname="Territories" camelcase="territories">
+        <md:entitycolumns>
+          <md:column name="TerritoryID" originalname="TerritoryID" label="TerritoryID" camelcase="territoryID" datatype="nvarchar" maxlength="20" allownulls="false" isprimarykey="true" />
+          <md:column name="TerritoryDescription" originalname="TerritoryDescription" label="TerritoryDescription" camelcase="territoryDescription" datatype="nchar" maxlength="50" allownulls="false" isprimarykey="false" />
+          <md:column name="RegionID" originalname="RegionID" label="RegionID" camelcase="regionID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false">
+            <md:foreignkeys>
+              <md:foreignkey name="RegionID" primarykeyentity="Region" primarykeycolumn="RegionID" />
+            </md:foreignkeys>
+          </md:column>
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="EmployeeTerritories.TerritoryID_Territories.TerritoryID" foreignkeyentity="EmployeeTerritories" foreignkeycolumn="TerritoryID" />
+        </md:relationships>
+      </md:entity>
+    </md:entities>
+  </md:dataStructure>
+</mdr:metadataroot>
