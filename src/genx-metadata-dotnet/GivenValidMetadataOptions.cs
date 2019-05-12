@@ -1,35 +1,35 @@
 using GenX.Cli.Core;
-using GenX.Cli.Core.Commands.MetaDataSqlClient;
+using GenX.Cli.Core.Commands.MetadataDotNet;
 using GenX.Cli.Infrastructure.Console;
 using Moq;
 using System.Linq;
 using System.Xml;
 using Xunit;
 
-namespace genx_metadata_sqlclient.Tests
+namespace genx_metadata_dotnet
 {
     public class GivenValidMetadataOptions
     {
         [Theory]
         [InlineData(new string[] {
-            @"Data Source=localhost;Initial Catalog=DB_NAME;Integrated Security=true;",
-            @"\.metadata.xml" },
+            @"test.dll",
+            @"\.test.xml" },
             ExitCode.Success)]
         public void When_Using_All_Available_Options(string[] args, ExitCode exitCode)
         {
-            var schemaReader = new Mock<IDbSchemaReader>();
-            var metadataWriter = new Mock<IMetadataWriter<DbModel>>();
+            var assemblyReader = new Mock<IAssemblyReader>();
+            var metadataWriter = new Mock<IMetadataWriter<AssemblyModel>>();
             var document = new Mock<XmlDocument>();
 
-            schemaReader.Setup(reader => reader.Read(
-                It.IsAny<string>())).Returns(new DbModel());
+            assemblyReader.Setup(reader => reader.Read(
+                It.IsAny<string>(), It.IsAny<string>())).Returns(new AssemblyModel());
 
             metadataWriter.Setup(writer => writer.Write(
-                It.IsAny<DbModel>())).Returns(document.Object);
+                It.IsAny<AssemblyModel>())).Returns(document.Object);
 
-            var command = new MetadataSqlClientCommand(
+            var command = new MetadataDotNetCommand(
                 args.ToList(),
-                schemaReader.Object,
+                assemblyReader.Object,
                 metadataWriter.Object,
                 new OutputWriter());
 
