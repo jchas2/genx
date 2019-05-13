@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>genx_metadata_dotnet</RootNamespace>
+    <RootNamespace>genx_metadata_dotnet.Tests</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>

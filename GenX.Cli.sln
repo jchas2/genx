@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-sqlclient.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.CommandFactory.Tests", "src\GenX.Cli.CommandFactory.Tests\GenX.Cli.CommandFactory.Tests.csproj", "{903DD36E-64B9-46D1-B516-49EAC162E7B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "genx-metadata-dotnet", "src\genx-metadata-dotnet\genx-metadata-dotnet.csproj", "{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-dotnet.Tests", "src\genx-metadata-dotnet\genx-metadata-dotnet.Tests.csproj", "{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Xml;
 using Xunit;
 
-namespace genx_metadata_dotnet
+namespace genx_metadata_dotnet.Tests
 {
     public class GivenValidMetadataOptions
     {
