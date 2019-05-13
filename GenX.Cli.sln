@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-sqlclient.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.CommandFactory.Tests", "src\GenX.Cli.CommandFactory.Tests\GenX.Cli.CommandFactory.Tests.csproj", "{903DD36E-64B9-46D1-B516-49EAC162E7B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-dotnet.Tests", "src\genx-metadata-dotnet\genx-metadata-dotnet.Tests.csproj", "{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,10 +49,6 @@ Global
 		{903DD36E-64B9-46D1-B516-49EAC162E7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{903DD36E-64B9-46D1-B516-49EAC162E7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903DD36E-64B9-46D1-B516-49EAC162E7B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +60,6 @@ Global
 		{8F32F33A-CBB6-4244-A1FD-DCF84E327BC4} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{8D109974-37F8-400F-9D16-17C03B226248} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{903DD36E-64B9-46D1-B516-49EAC162E7B1} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
-		{4D320BE3-7196-4DA7-A51B-4BB159CF1CDF} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EC4885D-0631-4492-9D7C-F3106AFD42BD}
