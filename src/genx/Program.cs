@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 
 namespace genx
 {
@@ -87,6 +88,7 @@ namespace genx
                 }
                 else if (IsValidArgument("verbose", args[argIndex]))
                 {
+                    commandContext.VerboseLogging = true;
                     outputWriter.IsVerbose = true;
                 }
                 else if (IsValidArgument("v", "version", args[argIndex]))
@@ -132,7 +134,53 @@ namespace genx
         {
             if (commandContext.NoLogo == false)
             {
-                outputWriter.Output.WriteLine("G E N X");
+                outputWriter.Output.WriteLine("G E N X  Code Generator");
+                outputWriter.Output.WriteLine(
+                    string.Format("Version {0}", Assembly.GetEntryAssembly().GetName().Version.ToString()));
+            }
+
+            if (commandContext.VerboseLogging)
+            {
+                outputWriter.Verbose.WriteLine();
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Command Line           : {0}", Environment.CommandLine));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Current Directory      : {0}", Environment.CurrentDirectory));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("64 Bit OS              : {0}", Environment.Is64BitOperatingSystem));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("64 Bit Process         : {0}", Environment.Is64BitProcess));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Machine Name           : {0}", Environment.MachineName));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("OS Version             : {0}", Environment.OSVersion));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Processor Count        : {0}", Environment.ProcessorCount));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("System Directory       : {0}", Environment.SystemDirectory));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("System Page Size       : {0}", Environment.SystemPageSize));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("User Interactive       : {0}", Environment.UserInteractive));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("User Name              : {0}", Environment.UserName));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Dotnet Runtime Version : {0}", Environment.Version));
+
+                outputWriter.Verbose.WriteLine(
+                    string.Format("Working Set            : {0}", Environment.WorkingSet));
             }
         }
 
