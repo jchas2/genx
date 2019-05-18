@@ -181,6 +181,8 @@ namespace genx
 
                 outputWriter.Verbose.WriteLine(
                     string.Format("Working Set            : {0}", Environment.WorkingSet));
+
+                outputWriter.Verbose.WriteLine();
             }
         }
 

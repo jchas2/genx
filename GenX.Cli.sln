@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-sqlclient.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.CommandFactory.Tests", "src\GenX.Cli.CommandFactory.Tests\GenX.Cli.CommandFactory.Tests.csproj", "{903DD36E-64B9-46D1-B516-49EAC162E7B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "genx-metadata-dotnet.Tests", "src\genx-metadata-dotnet.Tests\genx-metadata-dotnet.Tests.csproj", "{A7E1D34B-80D6-465E-889A-02C9DA72A474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-dotnet.Tests", "src\genx-metadata-dotnet.Tests\genx-metadata-dotnet.Tests.csproj", "{A7E1D34B-80D6-465E-889A-02C9DA72A474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Cli.Infrastructure.Tests", "src\GenX.Cli.Infrastructure.Tests\GenX.Cli.Infrastructure.Tests.csproj", "{473F2369-ADD0-4E1F-89BE-562F1E336718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Cli.Tests.Utilities", "src\GenX.Cli.Tests.Utilities\GenX.Cli.Tests.Utilities.csproj", "{94ED22A6-A264-4C42-8BA8-210069582D40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,14 @@ Global
 		{A7E1D34B-80D6-465E-889A-02C9DA72A474}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7E1D34B-80D6-465E-889A-02C9DA72A474}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7E1D34B-80D6-465E-889A-02C9DA72A474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473F2369-ADD0-4E1F-89BE-562F1E336718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473F2369-ADD0-4E1F-89BE-562F1E336718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473F2369-ADD0-4E1F-89BE-562F1E336718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473F2369-ADD0-4E1F-89BE-562F1E336718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94ED22A6-A264-4C42-8BA8-210069582D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94ED22A6-A264-4C42-8BA8-210069582D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94ED22A6-A264-4C42-8BA8-210069582D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94ED22A6-A264-4C42-8BA8-210069582D40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +79,8 @@ Global
 		{8D109974-37F8-400F-9D16-17C03B226248} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{903DD36E-64B9-46D1-B516-49EAC162E7B1} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{A7E1D34B-80D6-465E-889A-02C9DA72A474} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
+		{473F2369-ADD0-4E1F-89BE-562F1E336718} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
+		{94ED22A6-A264-4C42-8BA8-210069582D40} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EC4885D-0631-4492-9D7C-F3106AFD42BD}

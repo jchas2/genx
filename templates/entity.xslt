@@ -65,13 +65,16 @@ namespace <xsl:value-of select="$ApplicationName"/>.Core.Entities
 		<xsl:when test="@datatype='bit'">bool</xsl:when>
 		<xsl:when test="@datatype='char'">string</xsl:when>
 		<xsl:when test="@datatype='datetime'">DateTime</xsl:when>
+		<xsl:when test="@datatype='decimal'">decimal</xsl:when>
+		<xsl:when test="@datatype='float'">double</xsl:when>
 		<xsl:when test="@datatype='int'">int</xsl:when>
 		<xsl:when test="@datatype='image'">byte[]</xsl:when>
-		<xsl:when test="@datatype='money'">double</xsl:when>
+		<xsl:when test="@datatype='money'">decimal</xsl:when>
 		<xsl:when test="@datatype='nchar'">string</xsl:when>
+		<xsl:when test="@datatype='numeric'">decimal</xsl:when>
 		<xsl:when test="@datatype='ntext'">string</xsl:when>
 		<xsl:when test="@datatype='nvarchar'">string</xsl:when>
-		<xsl:when test="@datatype='real'">double</xsl:when>
+		<xsl:when test="@datatype='real'">Single</xsl:when>
 		<xsl:when test="@datatype='smallint'">short</xsl:when>
 		<xsl:when test="@datatype='text'">string</xsl:when>
 		<xsl:when test="@datatype='tinyint'">byte</xsl:when>
