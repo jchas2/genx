@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mdr:metadataroot metadataprovider = "GenX.Cli.Infrastructure.DbModelMetadataWriter" freeform="true" xmlns:mdr="http://genx.com/metadataroot">
+  <md:dataStructure name="dbname" xmlns:md="http://genx.com/metadata">
+    <md:entities>
+      <md:entity name="Products" originalname="Products" camelcase="products">
+        <md:entitycolumns>
+          <md:column name="ProductID" originalname="ProductID" label="ProductID" camelcase="productID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="false" />
+          <md:column name="ProductName" originalname="ProductName" label="ProductName" camelcase="productName" datatype="nvarchar" maxlength="40" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships />
+      </md:entity>
+      <md:entity name="Categories" originalname="Categories" camelcase="categories">
+        <md:entitycolumns>
+          <md:column name="CategoryID" originalname="CategoryID" label="CategoryID" camelcase="categoryID" datatype="int" maxlength="-1" allownulls="false" isprimarykey="true" />
+          <md:column name="CategoryName" originalname="CategoryName" label="CategoryName" camelcase="categoryName" datatype="nvarchar" maxlength="15" allownulls="false" isprimarykey="false" />
+        </md:entitycolumns>
+        <md:relationships>
+          <md:relationship name="Products.CategoryID_Categories.CategoryID" foreignkeyentity="Products" foreignkeycolumn="CategoryID" />
+        </md:relationships>
+      </md:entity>
+    </md:entities>
+  </md:dataStructure>
+</mdr:metadataroot>
