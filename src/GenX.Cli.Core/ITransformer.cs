@@ -4,6 +4,6 @@ namespace GenX.Cli.Core
 {
     public interface ITransformer
     {
-        void Transform(Configuration configuration);
+        string Transform(Configuration configuration);
     }
 }

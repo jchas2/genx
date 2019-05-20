@@ -1,10 +1,12 @@
 ﻿using FluentAssertions;
+using GenX.Cli.Infrastructure.Tests.Assets;
 using GenX.Cli.Tests.Utilities;
 using GenX.Cli.Tests.Utilities.FileSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using Xunit;
 
@@ -12,8 +14,6 @@ namespace GenX.Cli.Infrastructure.Tests
 {
     public class WhenUsingDbModelMetadataReader
     {
-        private const string StandardDbMetadataFile = "GenX.Cli.Infrastructure.Tests.Assets.valid_metadata.xml";
-
         private const string BogusDbMetadataFile = 
 @"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <bogusfile>
@@ -27,9 +27,9 @@ namespace GenX.Cli.Infrastructure.Tests
         {
             using (var tempFile = new TempFile(".xml"))
             {
-                string buffer = System.Text.Encoding.UTF8.GetString(
+                string buffer = Encoding.UTF8.GetString(
                     ManifestResourceStream.Get(
-                        Assembly.GetExecutingAssembly(), StandardDbMetadataFile));
+                        Assembly.GetExecutingAssembly(), AssetsConstants.StandardDbMetadataFile));
 
                 tempFile.WriteAllText(buffer);
                 var reader = new DbModelMetadataReader();

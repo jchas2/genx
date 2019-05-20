@@ -14,7 +14,7 @@ namespace GenX.Cli.Infrastructure
 
         public Transformer(IOutputWriter outputWriter) => _outputWriter = outputWriter;
 
-        public void Transform(Configuration configuration)
+        public string Transform(Configuration configuration)
         {
             var document = LoadMetadataDocument(configuration.MetadataPath);
             var transform = LoadTransform(configuration.XsltPath);
@@ -51,6 +51,8 @@ namespace GenX.Cli.Infrastructure
             }
 
             _outputWriter.Verbose.WriteLine();
+
+            return outputFile;
         }
 
         private string GetOutputFileName(Configuration configuration)

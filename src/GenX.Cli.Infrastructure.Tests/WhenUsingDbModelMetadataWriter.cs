@@ -27,12 +27,12 @@ namespace GenX.Cli.Infrastructure.Tests
                 new DbEntity()
                 {
                     Name = "Product", Schema = "dbo", Columns = new List<DbColumn>()
-                        {
-                            new DbColumn() { Name = "ProductId", DataType = "integer", IsNullable = false, Size = 4, ForeignKeys = new List<ForeignKey>() },
-                            new DbColumn() { Name = "ProductName", DataType = "nvarchar", IsNullable = false, Size = 255, ForeignKeys = new List<ForeignKey>() },
-                            new DbColumn() { Name = "CategoryId", DataType = "integer", IsNullable = false, Size = 4, ForeignKeys = new List<ForeignKey>()
-                                { new ForeignKey() { ForeignKeyColumn = "CategoryId", ForeignKeyEntity = "Product", PrimaryKeyColumn = "CategoryId", PrimaryKeyEntity = "Category" } } },
-                        },
+                    {
+                        new DbColumn() { Name = "ProductId", DataType = "integer", IsNullable = false, Size = 4, ForeignKeys = new List<ForeignKey>() },
+                        new DbColumn() { Name = "ProductName", DataType = "nvarchar", IsNullable = false, Size = 255, ForeignKeys = new List<ForeignKey>() },
+                        new DbColumn() { Name = "CategoryId", DataType = "integer", IsNullable = false, Size = 4, ForeignKeys = new List<ForeignKey>()
+                            { new ForeignKey() { ForeignKeyColumn = "CategoryId", ForeignKeyEntity = "Product", PrimaryKeyColumn = "CategoryId", PrimaryKeyEntity = "Category" } } },
+                    },
                     PrimaryKeys = new List<PrimaryKey>() { new PrimaryKey() { Name = "PK_Id", Entity = "Product" } },
                     Relationships = new List<ForeignKey>()
                 },

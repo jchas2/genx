@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\transform.xslt" />
+    <None Remove="Assets\CSharp.xslt" />
     <None Remove="Assets\valid_metadata.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\transform.xslt" />
+    <EmbeddedResource Include="Assets\CSharp.xslt" />
     <EmbeddedResource Include="Assets\valid_metadata.xml" />
   </ItemGroup>
 
