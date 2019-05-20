@@ -50,6 +50,7 @@ namespace GenX.Cli.Infrastructure.Tests
                 var transformer = new Transformer(new OutputWriter());
                 string outputPath = transformer.Transform(configuration);
                 string[] output = File.ReadAllLines(outputPath);
+                File.Delete(outputPath);
 
                 output[1].Should().Be("using System;");
                 output[3].Should().Be("namespace Genx.Test");
