@@ -4,6 +4,7 @@ using GenX.Cli.Infrastructure.Console;
 using GenX.Cli.Infrastructure.Tests.Assets;
 using GenX.Cli.Tests.Utilities;
 using GenX.Cli.Tests.Utilities.FileSystem;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -63,6 +64,55 @@ namespace GenX.Cli.Infrastructure.Tests
                 output[10].Should().Be("        }");
                 output[11].Should().Be("    }");
                 output[12].Should().Be("}");
+            }
+        }
+
+        [Fact]
+        public void Should_Fail_Transform_With_Invalid_Metadata_File()
+        {
+            var configuration = new Configuration()
+            {
+                MetadataPath = Guid.NewGuid().ToString() + ".xml",
+                XsltPath = "",
+                OutputDirectory = string.Empty,
+                OutputFileExtension = ".cs",
+                OutputFilename = "Test",
+                OutputFileNameSuffix = string.Empty,
+                Parameters = new List<Configuration.ParameterConfiguration>()
+            };
+
+            var transformer = new Transformer(new OutputWriter());
+            var transform = new Func<string>(() => transformer.Transform(configuration));
+
+            Assert.Throws<InvalidOperationException>(transform);
+        }
+
+        [Fact] 
+        public void Should_Fail_Transform_With_Invalid_Transform_File()
+        {
+            using (var tempXmlFile = new TempFile(".xml"))
+            {
+                string buffer = Encoding.UTF8.GetString(
+                    ManifestResourceStream.Get(
+                        Assembly.GetExecutingAssembly(), AssetsConstants.StandardDbMetadataFile));
+
+                tempXmlFile.WriteAllText(buffer);
+
+                var configuration = new Configuration()
+                {
+                    MetadataPath = tempXmlFile.Filename,
+                    XsltPath = Guid.NewGuid().ToString() + ".xslt",
+                    OutputDirectory = string.Empty,
+                    OutputFileExtension = ".cs",
+                    OutputFilename = "Test",
+                    OutputFileNameSuffix = string.Empty,
+                    Parameters = new List<Configuration.ParameterConfiguration>()
+                };
+
+                var transformer = new Transformer(new OutputWriter());
+                var transform = new Func<string>(() => transformer.Transform(configuration));
+
+                Assert.Throws<InvalidOperationException>(transform);
             }
         }
     }

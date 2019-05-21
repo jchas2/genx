@@ -18,7 +18,6 @@ namespace GenX.Cli.Infrastructure
         {
             var document = LoadMetadataDocument(configuration.MetadataPath);
             var transform = LoadTransform(configuration.XsltPath);
-
             var argumentList = new XsltArgumentList();
             var navigator = document.CreateNavigator();
             var outputFile = GetOutputFileName(configuration);
@@ -77,15 +76,14 @@ namespace GenX.Cli.Infrastructure
                 document.Load(filename);
                 return document;
             }
-            catch (Exception ex) when (ex is XmlException || ex is UnauthorizedAccessException || ex is NotSupportedException)
+            catch (Exception ex) when (ex is FileNotFoundException || ex is XmlException || ex is UnauthorizedAccessException || ex is NotSupportedException)
             {
-                _outputWriter.Error.WriteLine(
-                    string.Format(
+                string message = string.Format(
                         StringResources.ErrorLoadingMetadataDocument,
                         filename,
-                        ex.Message));
+                        ex.Message);
 
-                return null;
+                throw new InvalidOperationException(message);
             }
         }
 
@@ -100,15 +98,14 @@ namespace GenX.Cli.Infrastructure
                 transform.Load(filename);
                 return transform;
             }
-            catch (Exception ex) when (ex is XsltCompileException || ex is SecurityException)
+            catch (Exception ex) when (ex is FileNotFoundException || ex is XsltCompileException || ex is SecurityException)
             {
-                _outputWriter.Error.WriteLine(
-                    string.Format(
+                string message = string.Format(
                         StringResources.ErrorLoadingTransformDocument,
                         filename,
-                        ex.Message));
+                        ex.Message);
 
-                return null;
+                throw new InvalidOperationException(message);
             }
         }
     }
