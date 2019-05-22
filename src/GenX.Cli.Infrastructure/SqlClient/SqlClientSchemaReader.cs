@@ -2,16 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace GenX.Cli.Infrastructure.SqlClient
 {
     public class SqlClientSchemaReader : IDbSchemaReader
     {
+        private readonly ISqlClientConnectionFactory _connectionFactory;
         private readonly IOutputWriter _outputWriter;
 
-        public SqlClientSchemaReader(IOutputWriter outputWriter) => _outputWriter = outputWriter;
+        public SqlClientSchemaReader(ISqlClientConnectionFactory connectionFactory, IOutputWriter outputWriter)
+        {
+            _connectionFactory = connectionFactory;
+            _outputWriter = outputWriter;
+        }
 
         public DbModel Read(string connectionString)
         {
@@ -22,13 +26,14 @@ namespace GenX.Cli.Infrastructure.SqlClient
         {
             _outputWriter.Output.WriteLine(StringResources.ReadingSqlClientMetadata);
 
-            using (var connection = OpenConnection(connectionString))
+            using (var connection = _connectionFactory.Create(connectionString))
             {
-                if (connection == null)
-                {
-                    return null;
-                }
+                _outputWriter.Verbose.WriteLine(
+                    string.Format(StringResources.OpeningDatabaseWithConnectionString, connectionString));
 
+                connection.Open();
+
+                _outputWriter.Verbose.WriteLine(StringResources.SucessfullyOpenedConnection);
                 _outputWriter.Verbose.WriteLine(StringResources.ReadingSchemaColumns);
 
                 var dbModel = new DbModel();
@@ -125,7 +130,7 @@ namespace GenX.Cli.Infrastructure.SqlClient
             }
         }
 
-        private List<PrimaryKey> GetPrimaryKeys(string table, SqlConnection connection)
+        private List<PrimaryKey> GetPrimaryKeys(string table, ISqlClientConnection connection)
         {
             _outputWriter.Verbose.WriteLine(
                 string.Format(StringResources.ReadingPrimaryKeys, table));
@@ -157,27 +162,26 @@ namespace GenX.Cli.Infrastructure.SqlClient
             return primaryKeys;
         }
 
-        private List<ForeignKey> GetForeignKeys(string table, SqlConnection connection)
+        private List<ForeignKey> GetForeignKeys(string table, ISqlClientConnection connection)
         {
             _outputWriter.Verbose.WriteLine(
                 string.Format(StringResources.ReadingForeignKeys, table));
 
             var foreignKeys = new List<ForeignKey>();
-            var command = new SqlCommand(string.Format("exec sp_fkeys '{0}'", table), connection);
+
+            var command = connection.CreateCommand();
+            command.CommandText = string.Format("exec sp_fkeys '{0}'", table);
             var reader = command.ExecuteReader();
 
-            if (reader.HasRows)
+            while (reader.Read())
             {
-                while (reader.Read())
+                foreignKeys.Add(new ForeignKey()
                 {
-                    foreignKeys.Add(new ForeignKey()
-                    {
-                        PrimaryKeyEntity = reader["PKTABLE_NAME"].ToString(),
-                        PrimaryKeyColumn = reader["PKCOLUMN_NAME"].ToString(),
-                        ForeignKeyEntity = reader["FKTABLE_NAME"].ToString(),
-                        ForeignKeyColumn = reader["FKCOLUMN_NAME"].ToString()
-                    });
-                }
+                    PrimaryKeyEntity = reader["PKTABLE_NAME"].ToString(),
+                    PrimaryKeyColumn = reader["PKCOLUMN_NAME"].ToString(),
+                    ForeignKeyEntity = reader["FKTABLE_NAME"].ToString(),
+                    ForeignKeyColumn = reader["FKCOLUMN_NAME"].ToString()
+                });
             }
 
             reader.Close();
@@ -187,32 +191,6 @@ namespace GenX.Cli.Infrastructure.SqlClient
                     string.Format($"  [{fk.ForeignKeyEntity}].[{fk.ForeignKeyColumn}] -> [{fk.PrimaryKeyEntity}].[{fk.PrimaryKeyColumn}]")));
 
             return foreignKeys;
-        }
-
-        private SqlConnection OpenConnection(string connectionString)
-        {
-            _outputWriter.Verbose.WriteLine(
-                string.Format(StringResources.OpeningDatabaseWithConnectionString, connectionString));
-
-            try
-            {
-                var connection = new SqlConnection(connectionString);
-                connection.Open();
-
-                _outputWriter.Verbose.WriteLine(StringResources.SucessfullyOpenedConnection);
-
-                return connection;
-            }
-            catch (Exception ex) when (ex is SqlException)
-            {
-                _outputWriter.Output.WriteLine(
-                    string.Format(
-                        StringResources.FailedToOpenSqlClientConnection,
-                        connectionString,
-                        ex.Message));
-            }
-
-            return null;
         }
 
         private string FormatColumn(DbColumn column)
