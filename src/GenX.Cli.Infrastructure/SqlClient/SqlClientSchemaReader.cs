@@ -82,7 +82,7 @@ namespace GenX.Cli.Infrastructure.SqlClient
                         _outputWriter.Output.WriteLine(
                             string.Format(StringResources.ReadingEntity, schema, entity));
 
-                        var dbEntity = new DbEntity { Name = entity };
+                        var dbEntity = new DbEntity { Name = entity, Schema = schema };
 
                         var entityColumns = rows.Where(field => field.TableSchema.ToString() == schema && field.TableName.ToString() == entity)
                                                 .ToList();

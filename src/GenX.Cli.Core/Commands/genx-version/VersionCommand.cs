@@ -10,7 +10,9 @@ namespace GenX.Cli.Core.Commands.Version
 
         public ExitCode Execute()
         {
-            _outputWriter.Output.WriteLine(Assembly.GetEntryAssembly().GetName().Version.ToString());
+            _outputWriter.Output.WriteLine(
+                Assembly.GetEntryAssembly().GetName().Version.ToString());
+
             return ExitCode.Success;
         }
     }

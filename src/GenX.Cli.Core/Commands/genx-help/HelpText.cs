@@ -7,7 +7,7 @@ $@"{StringResources.Usage}: genx [startup-options] [metadata-commands | generati
 
 {StringResources.StartupOptionsDescription}
 
-startuo-options:
+startup-options:
     --help              {StringResources.HelpOptionDescription}
     --nologo            {StringResources.NoLogoDescription}
     --nologging|nl      {StringResources.NoLoggingDescription}
