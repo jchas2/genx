@@ -13,11 +13,27 @@ namespace GenX.Cli.Infrastructure.Dotnet
 
         public DotnetAssemblyReader(IOutputWriter outputWriter) => _outputWriter = outputWriter;
 
-        public AssemblyModel Read(
-            string filename, 
-            string namespaceFilter)
+        public AssemblyModel Read(byte[] rawAssembly, string namespaceFilter)
         {
-            var types = GetTypes(filename);
+            var assembly = LoadAssembly(rawAssembly);
+
+            return (assembly != null)
+                ? Read(assembly, namespaceFilter)
+                : null;
+        }
+
+        public AssemblyModel Read(string filename, string namespaceFilter)
+        {
+            var assembly = LoadAssembly(filename);
+
+            return (assembly != null)
+                ? Read(assembly, namespaceFilter)
+                : null;
+        }
+
+        private AssemblyModel Read(Assembly assembly, string namespaceFilter)
+        {
+            var types = GetTypes(assembly);
 
             if (types == null)
             {
@@ -31,9 +47,7 @@ namespace GenX.Cli.Infrastructure.Dotnet
                 return null;
             }
 
-            return MapModel(
-                Path.GetFileNameWithoutExtension(filename),
-                filteredTypes);
+            return MapModel(assembly.FullName, filteredTypes);
         }
 
         private AssemblyModel MapModel(string assemblyName, Type[] types)
@@ -51,7 +65,8 @@ namespace GenX.Cli.Infrastructure.Dotnet
                     Namespace = type.Namespace
                 };
 
-                var ctors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public);
+                var ctors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public)
+                    .OrderBy(ctor => ctor.Name);
 
                 foreach (var ctor in ctors)
                 {
@@ -66,7 +81,8 @@ namespace GenX.Cli.Infrastructure.Dotnet
                     typeEntity.Constructors.Add(constructor);
                 }
 
-                var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+                var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                    .OrderBy(pinfo => pinfo.Name);
 
                 foreach (var pinfo in properties)
                 {
@@ -78,7 +94,8 @@ namespace GenX.Cli.Infrastructure.Dotnet
                 }
 
                 var methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public)
-                    .Where(method => !method.IsSpecialName);
+                    .Where(method => !method.IsSpecialName)
+                    .OrderBy(method => method.Name);
 
                 foreach (var minfo in methods)
                 {
@@ -163,16 +180,29 @@ namespace GenX.Cli.Infrastructure.Dotnet
             return filteredTypes.ToArray();
         }
 
-        private Type[] GetTypes(string filename)
+        private Assembly LoadAssembly(byte[] rawAssembly)
         {
-            Assembly assembly = null;
+            try
+            {
+                return Assembly.Load(rawAssembly);
+            }
+            catch (BadImageFormatException ex)
+            {
+                _outputWriter.Error.WriteLine(
+                    string.Format(StringResources.BadImage, ex.Message));
 
+                return null;
+            }
+        }
+
+        private Assembly LoadAssembly(string filename)
+        {
             _outputWriter.Output.WriteLine(
                 string.Format(StringResources.LoadingAssembly, filename));
 
             try
             {
-                assembly = Assembly.LoadFrom(filename);
+                return Assembly.LoadFrom(filename);
             }
             catch (BadImageFormatException ex)
             {
@@ -188,7 +218,10 @@ namespace GenX.Cli.Infrastructure.Dotnet
 
                 return null;
             }
+        }
 
+        private Type[] GetTypes(Assembly assembly)
+        {
             try
             {
                 return assembly.GetTypes();
