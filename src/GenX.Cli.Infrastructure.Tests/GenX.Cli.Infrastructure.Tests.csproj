@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <None Remove="Assets\CSharp.xslt" />
+    <None Remove="Assets\GenX.Cli.Tests.TestAssembly.dll" />
     <None Remove="Assets\valid_metadata.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\CSharp.xslt" />
+    <EmbeddedResource Include="Assets\GenX.Cli.Tests.TestAssembly.dll" />
     <EmbeddedResource Include="Assets\valid_metadata.xml" />
   </ItemGroup>
 
@@ -22,10 +24,6 @@
     <PackageReference Include="Moq" Version="4.10.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dotnet\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.CommandFactory.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "genx-metadata-dotnet.Tests", "src\genx-metadata-dotnet.Tests\genx-metadata-dotnet.Tests.csproj", "{A7E1D34B-80D6-465E-889A-02C9DA72A474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Cli.Infrastructure.Tests", "src\GenX.Cli.Infrastructure.Tests\GenX.Cli.Infrastructure.Tests.csproj", "{473F2369-ADD0-4E1F-89BE-562F1E336718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.Infrastructure.Tests", "src\GenX.Cli.Infrastructure.Tests\GenX.Cli.Infrastructure.Tests.csproj", "{473F2369-ADD0-4E1F-89BE-562F1E336718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Cli.Tests.Utilities", "src\GenX.Cli.Tests.Utilities\GenX.Cli.Tests.Utilities.csproj", "{94ED22A6-A264-4C42-8BA8-210069582D40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenX.Cli.Tests.Utilities", "src\GenX.Cli.Tests.Utilities\GenX.Cli.Tests.Utilities.csproj", "{94ED22A6-A264-4C42-8BA8-210069582D40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenX.Cli.Tests.TestAssembly", "src\GenX.Cli.Tests.TestAssembly\GenX.Cli.Tests.TestAssembly.csproj", "{CA6988F4-732B-46E0-9325-72C190B5DB93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{94ED22A6-A264-4C42-8BA8-210069582D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94ED22A6-A264-4C42-8BA8-210069582D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94ED22A6-A264-4C42-8BA8-210069582D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6988F4-732B-46E0-9325-72C190B5DB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6988F4-732B-46E0-9325-72C190B5DB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6988F4-732B-46E0-9325-72C190B5DB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6988F4-732B-46E0-9325-72C190B5DB93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{A7E1D34B-80D6-465E-889A-02C9DA72A474} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{473F2369-ADD0-4E1F-89BE-562F1E336718} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 		{94ED22A6-A264-4C42-8BA8-210069582D40} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
+		{CA6988F4-732B-46E0-9325-72C190B5DB93} = {FA00CA02-C73E-47A6-B798-211B6B6BAFD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EC4885D-0631-4492-9D7C-F3106AFD42BD}

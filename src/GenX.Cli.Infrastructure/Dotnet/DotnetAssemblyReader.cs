@@ -77,7 +77,8 @@ namespace GenX.Cli.Infrastructure.Dotnet
                         GetProperty(pinfo));
                 }
 
-                var methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public);
+                var methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public)
+                    .Where(method => !method.IsSpecialName);
 
                 foreach (var minfo in methods)
                 {

@@ -1,0 +1,1 @@
+﻿This TestAssembly is embedded in the GenX.Cli.Infrastructure.Tests assembly's manifest to support some unit/integration tests for the genx-metadata-dotnet cli.

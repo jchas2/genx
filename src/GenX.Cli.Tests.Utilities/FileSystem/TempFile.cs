@@ -24,6 +24,11 @@ namespace GenX.Cli.Tests.Utilities.FileSystem
             File.WriteAllText(Filename, contents);
         }
 
+        public void WriteBuffer(byte[] buffer)
+        {
+            File.WriteAllBytes(Filename, buffer);
+        }
+
         public void Dispose()
         {
             if (File.Exists(Filename))
