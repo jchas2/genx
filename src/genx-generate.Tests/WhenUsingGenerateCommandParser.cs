@@ -9,6 +9,18 @@ namespace genx_generate.Tests
     {
         [Theory]
         [InlineData(new string[] {
+            /*Should pass with all parameters */
+            "--metadata", @"\.metadata.xml",
+            "--filter", "categories",
+            "--xslt", @".\repository.xslt",
+            "--xsltparam", "Namespace:Acme.Repository", "--xsltparam", "Company:Acme",
+            "--outputprefix", "I",
+            "--outputsuffix", "Repository",
+            "--outputExtension", ".cs",
+            "--outputdir", @"\output" },
+            0,
+            new string[] { "" })]
+        [InlineData(new string[] {
             /*Should pass without Xslt parameters */
             "--metadata", @"\.metadata.xml",
             "--xslt", @".\repository.xslt",

@@ -31,6 +31,7 @@ generation-commands:
 
 metadata-options:
     --metadata|md <path> 
+    --filter|f <entity-name>
 
 xslt-options:
     --xslt|x <path>

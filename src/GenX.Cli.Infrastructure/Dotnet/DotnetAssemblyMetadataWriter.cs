@@ -24,7 +24,7 @@ namespace GenX.Cli.Infrastructure.Dotnet
             var databaseElement = CreateElement(document, "dataStructure", model.Name, Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
             rootElement.AppendChild(databaseElement);
 
-            var entitiesElement = CreateElement(document, Constants.MetadataTypes, Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
+            var entitiesElement = CreateElement(document, Constants.MetadataEntities, Constants.ElementNameSpacePrefix, Constants.ElementNameSpace);
             entitiesElement.Prefix = Constants.ElementNameSpacePrefix;
 
             CreateTypesXml(document, model, entitiesElement);

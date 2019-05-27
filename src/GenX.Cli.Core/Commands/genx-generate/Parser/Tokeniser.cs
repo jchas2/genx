@@ -11,6 +11,8 @@ namespace GenX.Cli.Core.Commands.Generate.Parser
         {
             _tokenDefs = new List<TokenDef>
             {
+                new TokenDef(TokenType.Filter, "--FILTER"),
+                new TokenDef(TokenType.Filter, "--F"),
                 new TokenDef(TokenType.MetaData, "--METADATA"),
                 new TokenDef(TokenType.MetaData, "--MD"),
                 new TokenDef(TokenType.OutputDir, "--OUTPUTDIR"),

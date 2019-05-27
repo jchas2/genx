@@ -10,6 +10,5 @@
         public static readonly string ElementNameSpace = "http://genx.com/metadata";
 
         public static readonly string MetadataEntities = "entities";
-        public static readonly string MetadataTypes = "types";
     }
 }

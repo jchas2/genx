@@ -29,6 +29,7 @@ namespace GenX.Cli.Core.Commands.Generate
         public string XsltPath { get; set; }
         public List<ParameterConfiguration> Parameters { get; set; } = new List<ParameterConfiguration>();
         public string MetadataPath { get; set; }
+        public string MetadataFilter { get; set; }
         public string OutputDirectory { get; set; }
         public string OutputFileExtension { get; set; }
         public string OutputFilename { get; set; }

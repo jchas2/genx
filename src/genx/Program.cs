@@ -53,7 +53,7 @@ namespace genx
             var sqlClientSchemaReader = new SqlClientSchemaReader(sqlClientConnectionFactory, outputWriter);
             var assemblyReader = new DotnetAssemblyReader(outputWriter);
             var assemblyMetadataWriter = new DotnetAssemblyMetadataWriter(outputWriter);
-            var dbModelMetadataReader = new DbModelMetadataReader();
+            var dbModelMetadataReader = new ModelMetadataReader();
             var dbModelMetadataWriter = new DbModelMetadataWriter(outputWriter);
             var transformer = new Transformer(outputWriter);
             var directoryWrapper = new DirectoryWrapper();

@@ -19,7 +19,6 @@ namespace GenX.Cli.Core.Commands.Generate.Parser
             _configuration = new Configuration();
 
             MetadataCondition();
-
             DiscardToken(TokenType.Terminator);
 
             return _configuration;
@@ -29,14 +28,38 @@ namespace GenX.Cli.Core.Commands.Generate.Parser
         {
             if (IsMetadataOption(_lookaheadFirst) && IsTerm(_lookaheadSecond))
             {
-                _configuration.MetadataPath = _lookaheadSecond.Value;
+                if (_lookaheadFirst.TokenType == TokenType.MetaData && IsTerm(_lookaheadSecond))
+                {
+                    _configuration.MetadataPath = _lookaheadSecond.Value;
+                }
+                else if (_lookaheadFirst.TokenType == TokenType.Filter && IsTerm(_lookaheadSecond))
+                {
+                    _configuration.MetadataFilter = _lookaheadSecond.Value;
+                }
+                else
+                {
+                    _configuration.Messages.Add(new Configuration.MessageInfo(StringResources.ParserExpectedMetadataOption, true));
+                }
+
                 DiscardToken();
                 DiscardToken();
-                XsltCondition();
+                MetadataConditionNext();
             }
             else
             {
                 _configuration.Messages.Add(new Configuration.MessageInfo(StringResources.ParserExpectedMetadataOption, true));
+            }
+        }
+
+        private void MetadataConditionNext()
+        {
+            if (IsMetadataOption(_lookaheadFirst))
+            {
+                MetadataCondition();
+            }
+            else
+            {
+                XsltCondition();
             }
         }
 
@@ -155,7 +178,8 @@ namespace GenX.Cli.Core.Commands.Generate.Parser
             new Token(TokenType.Terminator, string.Empty);
 
         private bool IsMetadataOption(Token token) =>
-            token.TokenType == TokenType.MetaData;
+            token.TokenType == TokenType.MetaData ||
+            token.TokenType == TokenType.Filter;
 
         private bool IsXsltOption(Token token) =>
             token.TokenType == TokenType.XsltPath ||

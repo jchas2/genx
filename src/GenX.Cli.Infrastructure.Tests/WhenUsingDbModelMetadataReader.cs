@@ -32,7 +32,7 @@ namespace GenX.Cli.Infrastructure.Tests
                         Assembly.GetExecutingAssembly(), AssetsConstants.StandardDbMetadataFile));
 
                 tempFile.WriteAllText(buffer);
-                var reader = new DbModelMetadataReader();
+                var reader = new ModelMetadataReader();
                 var names = reader.ReadNames(tempFile.Filename).ToList();
 
                 Assert.True(names.Count == 2);
@@ -48,7 +48,7 @@ namespace GenX.Cli.Infrastructure.Tests
             using (var tempFile = new TempFile(".xml"))
             {
                 tempFile.WriteAllText(BogusDbMetadataFile);
-                var reader = new DbModelMetadataReader();
+                var reader = new ModelMetadataReader();
                 var names = reader.ReadNames(tempFile.Filename).ToList();
 
                 Assert.True(names.Count == 0);
@@ -61,7 +61,7 @@ namespace GenX.Cli.Infrastructure.Tests
             using (var tempFile = new TempFile(".xml"))
             {
                 tempFile.WriteAllText(BogusXmlFile);
-                var reader = new DbModelMetadataReader();
+                var reader = new ModelMetadataReader();
 
                 var readNames = new Func<List<string>>(() =>
                     reader.ReadNames(tempFile.Filename).ToList());
