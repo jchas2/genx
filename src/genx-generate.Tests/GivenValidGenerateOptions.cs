@@ -13,6 +13,16 @@ namespace genx_generate.Tests
         [Theory]
         [InlineData(new string[] {
             "--metadata", @"\.metadata.xml",
+            "--filter", "categories",
+            "--xslt", @".\repository.xslt",
+            "--xsltparam", "Namespace:Acme.Repository", "--xsltparam", "Company:Acme",
+            "--outputprefix", "I",
+            "--outputsuffix", "Repository",
+            "--outputExtension", ".cs",
+            "--outputdir", @"\output" },
+            ExitCode.Success)]
+        [InlineData(new string[] {
+            "--metadata", @"\.metadata.xml",
             "--xslt", @".\repository.xslt",
             "--xsltparam", "Namespace:Acme.Repository", "--xsltparam", "Company:Acme",
             "--outputprefix", "I",
