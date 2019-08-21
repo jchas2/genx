@@ -132,7 +132,13 @@ namespace GenX.Cli.Infrastructure
                         CreateAttribute(document, "foreignkeyentity", relationshipKey.ForeignKeyEntity));
 
                     relationshipNode.Attributes.Append(
+                        CreateAttribute(document, "foreignkeyentitycamelcase", relationshipKey.ForeignKeyEntity.ToCamelCase()));
+
+                    relationshipNode.Attributes.Append(
                         CreateAttribute(document, "foreignkeycolumn", relationshipKey.ForeignKeyColumn));
+
+                    relationshipNode.Attributes.Append(
+                        CreateAttribute(document, "foreignkeycolumncamelcase", relationshipKey.ForeignKeyColumn.ToCamelCase()));
 
                     relationshipsNode.AppendChild(relationshipNode);
                 }

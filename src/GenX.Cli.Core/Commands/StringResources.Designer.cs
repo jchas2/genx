@@ -133,11 +133,29 @@ namespace GenX.Cli.Core.Commands {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Metadata List command expects a metadata filename parameter..
+        /// </summary>
+        internal static string HelpMetadataListParameters {
+            get {
+                return ResourceManager.GetString("HelpMetadataListParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Displays usage / help text..
         /// </summary>
         internal static string HelpOptionDescription {
             get {
                 return ResourceManager.GetString("HelpOptionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List the contents of a metadata file..
+        /// </summary>
+        internal static string ListDescription {
+            get {
+                return ResourceManager.GetString("ListDescription", resourceCulture);
             }
         }
         

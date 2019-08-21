@@ -59,7 +59,7 @@ namespace GenX.Cli.Infrastructure.Tests
                 lines[7].Should().Be("          <md:column name=\"CategoryName\" originalname=\"CategoryName\" label=\"CategoryName\" camelcase=\"categoryName\" datatype=\"nvarchar\" maxlength=\"255\" allownulls=\"false\" isprimarykey=\"false\" />");
                 lines[8].Should().Be("        </md:entitycolumns>");
                 lines[9].Should().Be("        <md:relationships>");
-                lines[10].Should().Be("          <md:relationship name=\"Product.CategoryId_Category.CategoryId\" foreignkeyentity=\"Product\" foreignkeycolumn=\"CategoryId\" />");
+                lines[10].Should().Be("          <md:relationship name=\"Product.CategoryId_Category.CategoryId\" foreignkeyentity=\"Product\" foreignkeyentitycamelcase=\"product\" foreignkeycolumn=\"CategoryId\" foreignkeycolumncamelcase=\"categoryId\" />");
                 lines[11].Should().Be("        </md:relationships>");
                 lines[12].Should().Be("      </md:entity>");
                 lines[13].Should().Be("      <md:entity name=\"Product\" originalname=\"Product\" camelcase=\"product\">");

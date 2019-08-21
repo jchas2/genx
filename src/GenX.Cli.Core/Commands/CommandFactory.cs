@@ -1,6 +1,7 @@
 ﻿using GenX.Cli.Core.Commands.Generate;
 using GenX.Cli.Core.Commands.Help;
 using GenX.Cli.Core.Commands.MetadataDotNet;
+using GenX.Cli.Core.Commands.MetadataList;
 using GenX.Cli.Core.Commands.MetaDataOledb;
 using GenX.Cli.Core.Commands.MetaDataSqlClient;
 using GenX.Cli.Core.Commands.Version;
@@ -18,7 +19,7 @@ namespace GenX.Cli.Core.Commands
             IAssemblyReader assemblyReader,
             IMetadataWriter<DbModel> dbModelMetadataWriter,
             IMetadataWriter<AssemblyModel> assemblyMetadataWriter,
-            IMetadataReader dbModelMetadataReader,
+            IMetadataReader metadataReader,
             ITransformer transformer,
             IOutputWriter outputWriter,
             IDirectory directoryWrapper,
@@ -42,10 +43,16 @@ namespace GenX.Cli.Core.Commands
 
             RegisterCommand("metadata-oledb", () => new MetadataOledbCommand());
 
+            RegisterCommand("metadata-list", () => new MetadataListCommand(
+                context.CommandArgs,
+                metadataReader,
+                fileWrapper,
+                outputWriter));
+
             RegisterCommand("generate", () => new GenerateCommand(
                 context.CommandArgs,
                 transformer,
-                dbModelMetadataReader,
+                metadataReader,
                 directoryWrapper,
                 fileWrapper,
                 outputWriter));

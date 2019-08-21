@@ -21,8 +21,9 @@ startup-options:
 
 metadata-commands:
     metadata-oledb|oledb <connection-string> <filename>                     {StringResources.GenerateOledbDescription}
-    metadata-sql|sql <connection-string> <filename>                         {StringResources.GenerateSqlDescription}
+    metadata-sqlclient|sql <connection-string> <filename>                   {StringResources.GenerateSqlDescription}
     metadata-dotnet|dotnet <assembly-path> <filename> [<namespace-filter>]  {StringResources.GenerateDotnetDescription}  
+    metadata-list <filename>                                                {StringResources.ListDescription}
 
 {StringResources.Usage}: genx [generation-commands] [options]
 
