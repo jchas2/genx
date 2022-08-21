@@ -9,7 +9,7 @@ Param(
 )
 
 function Publish([string] $config) {
-    dotnet publish -c $config -r win10-x64
+    dotnet publish "src/genx/genx.csproj" -c $config -r win-x64 --self-contained true /p:PublishTrimmed=false /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:UseAppHost=true
 }
 
 if ($clean) {
@@ -31,8 +31,9 @@ if ($publish) {
 if ($deploy) {
     $templatesDir = "Templates"
     $outputDir = "Output"
-    $outputBinDir = $outputDir + "\Bin\"
-    $publishDir = "src\genx\bin\Release\netcoreapp2.1\win10-x64\publish\"
+    $outputBinDir = $outputDir + "\Bin"
+    $outputTemplatesDir = $outputBinDir + "\Templates"
+    $publishDir = "src\genx\bin\Release\net6.0\win-x64\publish\*.*"
 
     if (!(Test-Path $templatesDir)) {
         Write-Host "ERR: $templatesDir folder does not exist."
@@ -52,6 +53,5 @@ if ($deploy) {
     }
     
     copy-item -Path $publishDir -Destination $outputBinDir -Force -Recurse
+    copy-item -Path $templatesDir -Destination $outputTemplatesDir -Force -Recurse    
 }
-
-

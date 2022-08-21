@@ -6,7 +6,7 @@
 #       These examples use the pre-generated Northwind database metadata Xml file.
 #
 
-$genxExe = "Output\Bin\Publish\genx.exe" 
+$genxExe = "Output\Bin\genx.exe" 
 $organisationName = "Microsoft"
 $applicationName = "Northwind"
 $serviceName = "Orders"
